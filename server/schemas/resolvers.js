@@ -1,22 +1,20 @@
-const typeDefs = `
-type Book {
-    _id: ID
-    authors: String
-    description: String
-    bookId: String
-    image: String
-    link: String
-    title: String
-}
+const { Book, User } = require('../models');
 
-type User {
-    _id: ID
-    username: String
-    email: String
-    password: String
-    savedBooks: [bookSchema]
+const resolvers = {
+    Query: {
+        books: async () => {
+            return await Book.find({}).populate('').populate({
+                path: '',
+                populate: ''
+            });
+        },
+        users: async () => {
+            return await User.find({}).populate('').populate({
+                path: '',
+                populate: ''
+            });
+        }
+    }
+};
 
-}
-`;
-
-module.exports = typeDefs;
+module.exports = resolvers;
