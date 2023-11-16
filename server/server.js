@@ -26,6 +26,7 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
   
+  //express endpoint/route
   app.use('/graphql', expressMiddleware(server));
 
   db.once('open', () => {
