@@ -1,7 +1,7 @@
 const typeDefs = `
 type Book {
     _id: ID
-    authors: String
+    authors: [String]
     description: String
     bookId: String
     image: String
@@ -13,12 +13,18 @@ type User {
     _id: ID
     username: String
     email: String
+    bookCount: Int
     password: String
-    savedBooks: [bookSchema]
+    savedBooks: [Book]
+}
+
+type Auth {
+    token: String
+    user: User
 }
 
 type Query {
-    books: [Book]
+    me: User
 }
 
 type Mutation {
