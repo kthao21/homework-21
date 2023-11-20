@@ -8,27 +8,12 @@ import {
   Row
 } from 'react-bootstrap';
 
+import Auth from '../utils/auth';
+// import { saveBook, searchGoogleBooks } from '../utils/API';
+import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
+
 import { useMutation } from '@apollo/client';
 import { SAVE_BOOK } from '../utils/mutations';
-
-const [saveBook, { loading, data, error}] = useMutation(SAVE_BOOK);
-
-const handleFormSubmit = async (event) => {
-  event.preventDefault();
-
-  try {
-    const { data } = await saveBook({
-      vairables: { bookId },
-    });
-    window.location.reload();
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks } from '../utils/API';
-import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 const SearchBooks = () => {
   // create state for holding returned google api data
@@ -77,6 +62,8 @@ const SearchBooks = () => {
     }
   };
 
+  const [saveBook, { loading, data, error}] = useMutation(SAVE_BOOK);
+  
   // create function to handle saving a book to our database
   const handleSaveBook = async (bookId) => {
     // find the book in `searchedBooks` state by the matching id
