@@ -8,6 +8,24 @@ import {
   Row
 } from 'react-bootstrap';
 
+import { useMutation } from '@apollo/client';
+import { SAVE_BOOK } from '../utils/mutations';
+
+const [saveBook, { loading, data, error}] = useMutation(SAVE_BOOK);
+
+const handleFormSubmit = async (event) => {
+  event.preventDefault();
+
+  try {
+    const { data } = await saveBook({
+      vairables: { bookId },
+    });
+    window.location.reload();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 import Auth from '../utils/auth';
 import { saveBook, searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
