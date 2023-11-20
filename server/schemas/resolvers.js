@@ -7,12 +7,11 @@ const resolvers = {
                 path: '',
                 populate: ''
             });
-        },
-        users: async () => {
-            return await User.find({}).populate('').populate({
-                path: '',
-                populate: ''
-            });
+            Mutation: {
+                addBook: async (parent, {authors, description, bookId, image, link, title}) => {
+                    return await Book.create({authors, description, bookId, image, link, title});
+                }
+            }
         }
     }
 };
