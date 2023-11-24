@@ -8,8 +8,6 @@ This is a book search engine website that allows users to search any book and sa
 
 ![alt text](./client/src/assets/images/screenshot.png)
 
-## Credits
-
 ## License
 
 MIT license
