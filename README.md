@@ -6,7 +6,7 @@ This is a book search engine website that allows users to search any book and sa
 
 ## Usage
 
-![alt text](assets/images/screenshot.png)
+![alt text](./client/src/assets/images/screenshot.png)
 
 ## Credits
 
